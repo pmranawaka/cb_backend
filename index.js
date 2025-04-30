@@ -7,9 +7,13 @@ import productRouter from './routes/productRouter.js';
 import verifyJWT from './middleware/auth.js';
 import orderRouter from './routes/orderRoutes.js';
 import dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config()
 
+
 const app = express();
+
+app.use(cors())
 
 mongoose.connect(process.env.MONGO_URL).then(
     ()=>{
@@ -30,6 +34,7 @@ app.use(verifyJWT)
 
 
 app.use("/api/user" , userRouter)
+//p.use("/api/admin", adminRouter);
 app.use("/api/product", productRouter)
 app.use("/api/order", orderRouter)
 

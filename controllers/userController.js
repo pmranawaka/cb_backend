@@ -4,11 +4,13 @@ import jwt from "jsonwebtoken";
 import dotenv from 'dotenv';
 dotenv.config()
 export function saveUser(req, res) {
+	
+	
 
   if ( req.body.role == "admin") {
 	 if(req.user == null){
 		 res.status(403).json({
-			message : "Palease logig as a admin",
+			message : "Palease login as admin",
 		 });
 		 return;
 	 }
@@ -79,6 +81,7 @@ export function loginUser(req, res) {
 				res.json({
 					message: "Login successful",
 					token: token,
+					user : userData
 				});
 
 
